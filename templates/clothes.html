@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Каталог одежды</h2>
+
+<div class="mb-4">
+    <a href="{% url 'clothes_list' %}" class="btn btn-outline-dark">Все бренды</a>
+    {% for brand in brands %}
+        <a href="?brand={{ brand.id }}" class="btn btn-primary">{{ brand.name }}</a>
+    {% endfor %}
+</div>
+
+<div class="row">
+    {% for item in clothes %}
+    <div class="col-md-4">
+        <div class="card mb-3">
+            {% if item.image %}
+                <img src="{{ item.image.url }}" class="card-img-top">
+            {% endif %}
+            <div class="card-body">
+                <h5>{{ item.title }}</h5>
+                <p>Бренды: 
+                    {% for b in item.brands_name.all %}
+                        <span class="badge bg-info">{{ b.name }}</span>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to Shop.KG</h1>
+<p>Your online marketplace for quality products.</p>
+<div class="mt-4">
+    <a href="{% url 'product_list' %}" class="btn btn-primary btn-lg">Browse Products</a>
+    <a href="/about/" class="btn btn-secondary btn-lg">About Us</a>
+    <a href="/contact/" class="btn btn-info btn-lg">Contact</a>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <h3>🛒 Easy Shopping</h3>
+        <p>Browse and purchase products with our easy-to-use cart system.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>⭐ Customer Reviews</h3>
+        <p>Read reviews from other customers before making a purchase.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>🚚 Fast Delivery</h3>
+        <p>Quick and reliable delivery to your doorstep.</p>
+    </div>
+</div>
+{% endblock %}

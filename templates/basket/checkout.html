@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>📋 Оформление заказа</h1>
+    
+    <div class="row mt-4">
+        <div class="col-md-7">
+            <h4>Детали заказа</h4>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% for item in cart.items.all %}
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>{{ item.quantity }} × {{ item.product.product_name }}</span>
+                            <span>{{ item.total_price }} KGS</span>
+                        </li>
+                        {% endfor %}
+                        <li class="list-group-item d-flex justify-content-between">
+                            <strong>Общая сумма:</strong>
+                            <strong>{{ cart.total_price }} KGS</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-5">
+            <h4>Информация о доставке</h4>
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label class="form-label">ФИО *</label>
+                    {{ form.customer_name }}
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Email *</label>
+                    {{ form.customer_email }}
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Телефон *</label>
+                    {{ form.customer_phone }}
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Адрес доставки *</label>
+                    {{ form.address }}
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Город *</label>
+                    {{ form.city }}
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Примечания</label>
+                    {{ form.notes }}
+                </div>
+                
+                <button type="submit" class="btn btn-success btn-lg w-100">
+                    Подтвердить заказ
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

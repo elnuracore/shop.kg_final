@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Список анкет разработчиков</h2>
+<div class="row">
+    {% for u in users %}
+    <div class="col-md-4 mb-3">
+        <div class="card p-3">
+            <h5>{{ u.username }}</h5>
+            <p>Email: {{ u.email }}</p>
+            <p><small>Зарегистрирован: {{ u.date_joined }}</small></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

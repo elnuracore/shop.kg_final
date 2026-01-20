@@ -1,0 +1,8 @@
+<h2>Список всех анкет backend-разработчиков</h2>
+{% for user in users %}
+    <div style="border: 1px solid #000; padding: 10px; margin-bottom: 5px;">
+        <p><strong>Имя:</strong> {{ user.username }}</p>
+        <p><strong>Стек:</strong> {{ user.skills }}</p>
+        <p><strong>GitHub:</strong> {{ user.github_link }}</p>
+    </div>
+{% endfor %}
